@@ -5,10 +5,11 @@ class Enigma
     @abc_index = ("a".."z").to_a << " "
     @shift = shift
     @key = key
-    @date - date.today
+    @date = date.today
   end
 
 
   def encrypt(message, key, date)
+    {message => message, key => key, date => date }
   end
 end
