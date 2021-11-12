@@ -8,13 +8,14 @@ let(:enigma) { Enigma.new }
     expect(enigma).to be_an_instance_of(Enigma)
   end
 
-  it 'can encrypt messages with a key and date' do
-    expect(enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"  })
-  end
+  # it 'can encrypt messages with a key and date' do
+  #   expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+  #   expect(enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
+  # end
 
-  it 'can create shifts' do
-    keys = 02715
-    offsets = 040895
-    expect(enigma.shift).to eq({a: 3, b: 27, c: 73, d: 20})
-  end
+  # it 'can create shifts' do
+  #   keys = "02715"
+  #   offsets = "040895"
+  #   expect(enigma.shift).to eq({a: 3, b: 27, c: 73, d: 20})
+  # end
 end

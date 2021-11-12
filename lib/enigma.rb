@@ -17,11 +17,11 @@ class Enigma
   # example: "hello" and shifts 1, 2, 3, 4, encrypt using shifts and .each to
   # iterate over each letter in string message
   # encrypt: find index of letter; rotate by shift or by key
-  def encrypt(message, key, date)
-    {message => "message",
-    key => "key",
-    date => "date" }
-  end
+  # def encrypt(message, key, date) # date
+  #   {message => "message",
+  #   key => "key",
+  #   date => "date" }
+  # end
 
   def decrypt
   end
