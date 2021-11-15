@@ -15,4 +15,14 @@ class Generator
     num_string = key_num.to_s.delete("[] ,")
     num_string.rjust(5, '0')
   end
+
+  def date_string(date = Date.today)
+    date = Date.today if date == nil
+    date.to_s
+  end
+
+  def offset
+    date_string
+  end
+
 end
