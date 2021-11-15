@@ -1,13 +1,29 @@
 require 'date'
 
 class Enigma
-  attr_reader :abc_index, :shift, :key, :date
+  attr_accessor :key, :date, :abc_index
   def initialize
+    @key = rand(00000..99999)
+    @date = Date.today
     @abc_index = ("a".."z").to_a << " "
-    # @date = date.today
   end
 
-  def
+  # def generate_key
+  #   Key
+  #   require "pry"; binding.pry
+  # end
+  #
+
+  def default_key
+    @key
+  end
+
+  def offset
+  end
+
+  # def shift
+  #   keys + offsets
+  # end
   # what steps need to happen to encrypt
   # find the shifts
   # encrypt the message using shifts
@@ -17,11 +33,11 @@ class Enigma
   # example: "hello" and shifts 1, 2, 3, 4, encrypt using shifts and .each to
   # iterate over each letter in string message
   # encrypt: find index of letter; rotate by shift or by key
-  # def encrypt(message, key, date) # date
-  #   {message => "message",
-  #   key => "key",
-  #   date => "date" }
-  # end
+  def encrypt(message, key = default_key, date = default_date)
+    {message: message,
+    key: key,
+    date: date}
+  end
 
   def decrypt
   end
