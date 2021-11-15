@@ -24,7 +24,19 @@ describe Generator do
 
   it 'pads keys with 0s' do
     generator = Generator.new
+    expect(generator.key_pad([1])).to eq("00001")
+    expect(generator.key_pad([1, 2, 3])).to eq("00123")
+    expect(generator.key_pad([0, 0, 0, 0])).to eq("00000")
+  end
 
+  it 'returns the date as a string' do
+    generator = Generator.new
+    expect(generator.date_string).to be_a(String)
+  end
+
+  it 'generates offsets' do
+    generator = Generator.new
+    expect(generator.offset).to be_an(String)
   end
 
 
