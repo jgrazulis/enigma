@@ -33,13 +33,6 @@ describe Generator do
     generator = Generator.new
     expect(generator.formatted_key("02715")).to eq([2, 27, 71, 15])
   end
-  # it 'has keys' do
-  #   generator = Generator.new
-  #   expect(generator.a_key).to be_an(Integer)
-  #   expect(generator.b_key).to be_an(Integer)
-  #   expect(generator.c_key).to be_an(Integer)
-  #   expect(generator.d_key).to be_an(Integer)
-  # end
 
   it 'returns the date as a string' do
     generator = Generator.new
