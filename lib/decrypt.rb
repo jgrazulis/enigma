@@ -11,4 +11,4 @@ decrypted_text = enigma.decrypt(incoming_text, ARGV[2], ARGV[3])
 writer = File.open(ARGV[1], "w")
 writer.write(decrypted_text[:encryption])
 writer.close
-puts "Created #{ARGV[1]} with #{decrypted_text[:key]} and #{decrypted_text[:date]}"
+puts "Created '#{ARGV[1]}' with #{decrypted_text[:key]} and #{decrypted_text[:date]}"
