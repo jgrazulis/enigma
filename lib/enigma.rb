@@ -3,36 +3,11 @@ require 'date'
 class Enigma
   attr_accessor :key, :date, :abc_index
   def initialize
+    @generator = Generator.new
     @key = key
     @date = Date.today
-    @abc_index = ("a".."z").to_a << " "
+    @abc_index = ABC_index.new
   end
-
-  # def random_key
-  #   rand(000000..99999)
-  # end
-
-  def a_key
-    key
-  end
-
-  def a_offset
-    date.to_s
-  end
-
-  def b_offset
-
-  end
-
-  def c_offset
-
-  end
-
-  def d_offset
-
-  end
-
-
 
   # def shift
   #   keys + offsets
@@ -46,12 +21,29 @@ class Enigma
   # example: "hello" and shifts 1, 2, 3, 4, encrypt using shifts and .each to
   # iterate over each letter in string message
   # encrypt: find index of letter; rotate by shift or by key
-  def encrypt(message, key = random_key, date = default_date)
-    {message: message,
+  def encrypt(message, key = @generator.random_key, date = @generator.date_string(Date.today.strftime("%m%d%y")))
+    encrypt_hash =
+    {encryption: message,
     key: key,
     date: date}
-  end
-
-  def decrypt
+    encrypt_string = []
+    e_shifts = @generator.shifts(key, date)
+    # by corresponding shift
+    message.chars.each_with_index do |letter, index|
+      if index%4 == 0
+        encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[0])[@abc_index.letter_hash[letter]]
+      end
+      if index%4 == 1
+        encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[1])[@abc_index.letter_hash[letter]]
+      end
+      if index%4 == 2
+        encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[2])[@abc_index.letter_hash[letter]]
+      end
+      if index%4 == 3
+        encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[3])[@abc_index.letter_hash[letter]]
+      end
+    end
+    encrypt_hash[:encryption] = encrypt_string.join
+    encrypt_hash
   end
 end
