@@ -15,11 +15,10 @@ RSpec.describe Enigma do
     expect(enigma.date).to eq(date)
   end
 
-  # it 'can encrypt messages without a key or date' do
-  #   enigma = Enigma.new
-  #   expected = {encryption: "mifatdqdwpy", key: "02715", date: "111521"}
-  #   expect(enigma.encrypt("hello world")).to eq(expected)
-  # end
+  it 'returns a hash in #encrypt' do
+    enigma = Enigma.new
+    expect(enigma.encrypt("hello world", "02715", "040895")).to be_a(Hash)
+  end
 
   it 'can encrypt messages without a given date' do
     enigma = Enigma.new
@@ -44,6 +43,10 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world!", "02715", "040895")).to eq({:date=>"040895", :encryption=>"keder ohulw!", :key=>"02715"})
   end
 
+  it 'returns a hash in #decrypt' do
+    enigma = Enigma.new
+    expect(enigma.decrypt("keder ohulw", "02715", "040895")).to be_a(Hash)
+  end
   it 'can decrypt messages with a key and date' do
     enigma = Enigma.new
     expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq({:date=>"040895", :encryption=>"hello world", :key=>"02715"})
@@ -53,4 +56,5 @@ RSpec.describe Enigma do
     enigma = Enigma.new
     expect(enigma.decrypt("keder ohulw!", "02715", "040895")).to eq({:date=>"040895", :encryption=>"hello world!", :key=>"02715"})
   end
+
 end
