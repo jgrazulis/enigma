@@ -12,12 +12,6 @@ class Generator
     num_string.rjust(5, '0')
   end
 
-  # def key_pad(key_num)
-  #   num_string = key_num.to_s.delete("[] ,")
-  #   num_string.rjust(5, '0')
-  # end
-    # key_pad(random_key)
-
   def formatted_key(key)
     a_key = key.slice(0..1).to_i
     b_key = key.slice(1..2).to_i
