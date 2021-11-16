@@ -17,15 +17,15 @@ RSpec.describe Enigma do
 
   it 'can encrypt messages without a given date' do
     enigma = Enigma.new
-    expected = {encryption: "nifaudqdxpy", key: "02715", date: "151121"}
+    expected = {encryption: "mifatdqdwpy", key: "02715", date: "111521"}
     expect(enigma.encrypt("hello world", "02715")).to eq(expected)
   end
 
-  # it 'can encrypt messages without a given key' do
-  #   enigma = Enigma.new
-  #   expected = {encryption: "pvxuwqhxzbp", key: "0", date: "040895"}
-  #   expect(enigma.encrypt("hello world", "040895")).to eq(expected)
-  # end
+  it 'can encrypt messages without a given key' do
+    enigma = Enigma.new
+    expected =  {:date=>"111521", :encryption=>"ovxuvqhxybp", :key=>"040895"}
+    expect(enigma.encrypt("hello world", "040895")).to eq(expected)
+  end
 
   it 'can encrypt messages with a key and date' do
     enigma = Enigma.new
