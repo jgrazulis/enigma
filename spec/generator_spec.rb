@@ -17,9 +17,7 @@ describe Generator do
 
   it 'generates #random_key' do
     generator = Generator.new
-    expect(generator.random_key).to be_an(String)
-    # expect(generator.random_key.first).to be_an(Integer)
-    # expect(generator.random_key.last).to be_an(Integer)
+    expect(generator.random_key).to be_a(String)
   end
 
   # it 'pads keys with 0s' do
@@ -52,7 +50,8 @@ describe Generator do
 
   it 'returns #sq_date' do
     generator = Generator.new
-    expect(generator.sq_date("040895")).to be_an(String)
+    expect(generator.sq_date("040895")).to eq("1025")
+    expect(generator.sq_date("040895")).to be_a(String)
   end
 
   it 'date_array' do
@@ -62,6 +61,7 @@ describe Generator do
 
   it 'splits out the last four digits of the date array' do
     generator = Generator.new
+    expect(generator.last_four(["1", "6", "7", "2", "4", "0", "1", "0", "2", "5"])).to eq("1025")
     expect(generator.last_four(["1", "6", "7", "2", "4", "0", "1", "0", "2", "5"])).to be_a(String)
   end
 
@@ -73,16 +73,10 @@ describe Generator do
     expect(generator.d_offset(["5", "2", "3", "7", "8"])).to eq(8)
   end
 
-  # it 'can create shifts with a default key and date' do
-  #   generator = Generator.new
-  #   expect(generator.shifts(key, date)).to be_a(Hash)
-  # end
-
   it 'can create shifts with a given date and key' do
     generator = Generator.new
     key = "02715"
     offsets = "040895"
     expect(generator.shifts("02715", "040895" )).to eq({a: 3, b: 27, c: 73, d: 20})
   end
-
 end
