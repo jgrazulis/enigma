@@ -17,7 +17,6 @@ writer = File.open(ARGV[1], "w")
 
 writer.write(encrypted_text[:encryption])
 
-
 writer.close
 
 puts "Created #{ARGV[1]} with #{encrypted_text[:key]} and #{encrypted_text[:date]}"
