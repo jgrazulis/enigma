@@ -11,9 +11,7 @@ class Enigma
 
   def encrypt(message, key = @generator.random_key, date = @generator.date_string(Date.today.strftime("%m%d%y")))
     encrypt_hash =
-    {encryption: message,
-    key: key,
-    date: date}
+    {encryption: message, key: key, date: date}
     encrypt_string = []
     e_shifts = @generator.shifts(key, date)
     # by corresponding shift
@@ -24,10 +22,8 @@ class Enigma
         encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[0])[@abc_index.letter_hash[letter]]
       elsif index%4 == 1
         encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[1])[@abc_index.letter_hash[letter]]
-
       elsif index%4 == 2
         encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[2])[@abc_index.letter_hash[letter]]
-
       else index%4 == 3
         encrypt_string << @abc_index.letter_array.rotate(e_shifts.values[3])[@abc_index.letter_hash[letter]]
       end
